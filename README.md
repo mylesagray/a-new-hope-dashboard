@@ -15,7 +15,7 @@ The repo contains all the source for a dashboard and smoketesting client.
 
 You can submit testdata using the following `curl` command while the dashboard webserver is running:
 
-    curl -X POST -H "Content-Type: application/json" -d '{"node":"test-node", "fpsvalue": 100}' localhost:5000/api/metrics
+    curl -X POST -H "Content-Type: application/json" -d '{"node":"test-node", "fpsvalue": 100}' localhost:5000/api/db-metrics
     
 The submitted data should appear on screen instantly if everything is working correct.
 
