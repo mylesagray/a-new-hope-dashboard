@@ -32,16 +32,15 @@ namespace MetricDashboard
                 }
                 else
                 {
-                    metric.FpsValue = newMetric.FpsValue;
+                    metric.FpsValue = metric.FpsValue + newMetric.FpsValue;
+                    //Update Prometheus metric
+                    Aggregate_FPS.Set(newMetric.FpsValue);
                 }
             }
             else
             {
                 CurrentMetricsCollection.Add(newMetric);
             }
-
-            //Update Prometheus metric
-            Aggregate_FPS.Set(newMetric.FpsValue);
 
             await _metricsHub.Clients.All.SendAsync("updateCounters", CurrentMetricsCollection.ToArray());
         }
